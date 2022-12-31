@@ -2,7 +2,7 @@
 
 This is a POC for the new kubernetes networking evolution step, [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/).
 
-![](https://github.com/nurhun/Kubernetes_Gateway_API_getting_started/demo.gif)
+![](https://github.com/nurhun/Kubernetes_Gateway_API_getting_started/blob/main/demo.gif)
 
 
 While it's supposed that the gateway API comes with extended featues versus the current [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) project already support. However, this demo will cover deploying simple application with splitted traffic.
