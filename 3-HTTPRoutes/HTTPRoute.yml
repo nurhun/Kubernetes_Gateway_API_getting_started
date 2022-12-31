@@ -1,0 +1,28 @@
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: movie-external
+spec:
+  parentRefs:
+  - kind: Gateway
+    name: external-http
+  hostnames:
+  - "x.x.x.x.nip.io"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api
+    - path:
+        type: PathPrefix
+        value: /admin
+    backendRefs:
+    - name: backend
+      port: 80
+  - backendRefs:
+    - name: frontend-v1
+      port: 80
+      weight: 50
+    - name: frontend-v2
+      port: 80
+      weight: 50

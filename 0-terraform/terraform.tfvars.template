@@ -1,0 +1,6 @@
+# --- terraform.tfvars ---
+
+PROJECT_ID          = ""
+REGION              = ""
+ZONE                = ""
+CLUSTER_NAME        = ""

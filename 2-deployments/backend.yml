@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: nurhun/django_rest_framework_movies_apis_w_react_frontend_backend:v0.1.0
+        args:
+        - -c
+        - gunicorn moviesapi.wsgi --bind=0.0.0.0:8000 --reload --workers=2 --threads=2 --timeout=120 --log-level=Debug
+        ports:
+        - containerPort: 8000
+        env:
+          - name: SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: secretkey
+                key: SECRET_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+  - port: 80
+    targetPort: 8000
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secretkey
+type: Opaque
+data:
+  SECRET_KEY: Y2xhc3NpZmllZA==
