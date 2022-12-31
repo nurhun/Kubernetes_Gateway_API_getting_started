@@ -45,3 +45,6 @@ Then, pass this IP in the HTTPROUTE file .spec.hostnames in the format of browsa
 - non-http protocol.
 
 
+#### Feedback
+- It's observed that deploying or making changes to HTTPRoute takes a bit of time to reflect.
+- I'd argue there'are some requests lost, it's just no response and I had to refresh couple of times to get the page! 
